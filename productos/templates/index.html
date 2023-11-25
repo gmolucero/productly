@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+    {% block content %}
+        <h1>Productos</h1>
+        <a href="{% url 'productos:nuevo' %}" class="btn btn-primary">Crear Producto</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Stock</th>
+                    <th>Puntaje</th>
+                    <th>Categoria</th>
+                    <th></th>
+                </tr>
+            </thead>
+            {% if productos %}
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>
+                        <a href="{% url 'productos:detalle' producto.id %}">{{ producto.nombre }}</a>
+                    </td>
+                    <td>{{ producto.stock }}</td>
+                    <td>{{ producto.puntaje }}</td>
+                    <td>{{ producto.Categoria }}</td>
+                {% endfor %}
+            </tbody>
+            {% endif %}
+        </table>
+    {% endblock %}
